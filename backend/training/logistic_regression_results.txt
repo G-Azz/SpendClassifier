@@ -1,0 +1,26 @@
+
+============================================================
+Model: LogisticRegression
+Params: C=10, class_weight=None, solver='liblinear'
+Accuracy: 0.9650
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       1.00      0.97      0.98        33
+         Food       1.00      1.00      1.00        48
+        Other       1.00      0.92      0.96        37
+    Transport       1.00      0.92      0.96        38
+    Utilities       0.86      1.00      0.93        44
+
+     accuracy                           0.96       200
+    macro avg       0.97      0.96      0.97       200
+ weighted avg       0.97      0.96      0.97       200
+
+Confusion Matrix:
+[[32  0  0  0  1]
+ [ 0 48  0  0  0]
+ [ 0  0 34  0  3]
+ [ 0  0  0 35  3]
+ [ 0  0  0  0 44]]
+
+✅ LogisticRegression Model accuracy: 0.9650

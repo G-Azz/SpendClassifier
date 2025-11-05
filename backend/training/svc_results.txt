@@ -1,0 +1,26 @@
+
+============================================================
+Model: SVC
+Params: C=1, kernel='linear', gamma='scale', class_weight=None
+Accuracy: 0.9750
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       0.97      0.94      0.95        33
+         Food       1.00      1.00      1.00        48
+        Other       0.97      0.97      0.97        37
+    Transport       0.97      0.97      0.97        38
+    Utilities       0.96      0.98      0.97        44
+
+     accuracy                           0.97       200
+    macro avg       0.97      0.97      0.97       200
+ weighted avg       0.98      0.97      0.97       200
+
+Confusion Matrix:
+[[31  0  0  1  1]
+ [ 0 48  0  0  0]
+ [ 1  0 36  0  0]
+ [ 0  0  0 37  1]
+ [ 0  0  1  0 43]]
+
+✅ SVC Model accuracy: 0.9750

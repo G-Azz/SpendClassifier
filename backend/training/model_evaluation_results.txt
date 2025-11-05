@@ -1,0 +1,152 @@
+
+============================================================
+Model: LogisticRegression
+Best Params: {'C': 10, 'class_weight': None}
+Accuracy: 0.9608
+
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       1.00      0.94      0.97        17
+         Food       1.00      1.00      1.00        25
+        Other       1.00      0.92      0.96        26
+    Transport       0.94      0.94      0.94        16
+    Utilities       0.86      1.00      0.92        18
+
+     accuracy                           0.96       102
+    macro avg       0.96      0.96      0.96       102
+ weighted avg       0.96      0.96      0.96       102
+
+Confusion Matrix:
+[[16  0  0  1  0]
+ [ 0 25  0  0  0]
+ [ 0  0 24  0  2]
+ [ 0  0  0 15  1]
+ [ 0  0  0  0 18]]
+
+============================================================
+Model: LinearSVC
+Best Params: {'C': 10, 'class_weight': None}
+Accuracy: 0.9608
+
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       0.94      1.00      0.97        17
+         Food       1.00      1.00      1.00        25
+        Other       1.00      0.92      0.96        26
+    Transport       1.00      0.94      0.97        16
+    Utilities       0.85      0.94      0.89        18
+
+     accuracy                           0.96       102
+    macro avg       0.96      0.96      0.96       102
+ weighted avg       0.96      0.96      0.96       102
+
+Confusion Matrix:
+[[17  0  0  0  0]
+ [ 0 25  0  0  0]
+ [ 0  0 24  0  2]
+ [ 0  0  0 15  1]
+ [ 1  0  0  0 17]]
+
+============================================================
+Model: SGDClassifier
+Best Params: {'alpha': 0.0001, 'class_weight': None, 'loss': 'hinge'}
+Accuracy: 0.9510
+
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       0.94      1.00      0.97        17
+         Food       1.00      1.00      1.00        25
+        Other       1.00      0.88      0.94        26
+    Transport       1.00      0.94      0.97        16
+    Utilities       0.81      0.94      0.87        18
+
+     accuracy                           0.95       102
+    macro avg       0.95      0.95      0.95       102
+ weighted avg       0.96      0.95      0.95       102
+
+Confusion Matrix:
+[[17  0  0  0  0]
+ [ 0 25  0  0  0]
+ [ 0  0 23  0  3]
+ [ 0  0  0 15  1]
+ [ 1  0  0  0 17]]
+
+============================================================
+Model: MultinomialNB
+Best Params: {'alpha': 0.1}
+Accuracy: 0.9412
+
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       1.00      0.94      0.97        17
+         Food       1.00      0.92      0.96        25
+        Other       1.00      0.92      0.96        26
+    Transport       0.83      0.94      0.88        16
+    Utilities       0.86      1.00      0.92        18
+
+     accuracy                           0.94       102
+    macro avg       0.94      0.94      0.94       102
+ weighted avg       0.95      0.94      0.94       102
+
+Confusion Matrix:
+[[16  0  0  1  0]
+ [ 0 23  0  2  0]
+ [ 0  0 24  0  2]
+ [ 0  0  0 15  1]
+ [ 0  0  0  0 18]]
+
+============================================================
+Model: RandomForestClassifier
+Best Params: {'class_weight': None, 'max_depth': None, 'n_estimators': 50}
+Accuracy: 0.8922
+
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       1.00      0.88      0.94        17
+         Food       0.86      1.00      0.93        25
+        Other       1.00      0.81      0.89        26
+    Transport       1.00      0.75      0.86        16
+    Utilities       0.72      1.00      0.84        18
+
+     accuracy                           0.89       102
+    macro avg       0.92      0.89      0.89       102
+ weighted avg       0.92      0.89      0.89       102
+
+Confusion Matrix:
+[[15  1  0  0  1]
+ [ 0 25  0  0  0]
+ [ 0  1 21  0  4]
+ [ 0  2  0 12  2]
+ [ 0  0  0  0 18]]
+
+============================================================
+Model: SVC
+Best Params: {'C': 1, 'class_weight': None, 'gamma': 'scale', 'kernel': 'linear'}
+Accuracy: 0.9510
+
+Classification Report:
+               precision    recall  f1-score   support
+
+Entertainment       0.94      0.94      0.94        17
+         Food       1.00      1.00      1.00        25
+        Other       1.00      0.92      0.96        26
+    Transport       0.94      0.94      0.94        16
+    Utilities       0.85      0.94      0.89        18
+
+     accuracy                           0.95       102
+    macro avg       0.95      0.95      0.95       102
+ weighted avg       0.95      0.95      0.95       102
+
+Confusion Matrix:
+[[16  0  0  1  0]
+ [ 0 25  0  0  0]
+ [ 0  0 24  0  2]
+ [ 0  0  0 15  1]
+ [ 1  0  0  0 17]]
+
+✅ Best Model: LogisticRegression with accuracy 0.9608

@@ -56,27 +56,72 @@ function TransactionTable() {
     };
 
 
-    const addRow = () => {
-        const updated = rows.map((row) => {
-            const newErrors = {
-                date: validateField("date", row.date),
-                description: validateField("description", row.description),
-                amount: validateField("amount", row.amount),
-            };
-            return { ...row, errors: newErrors };
-        });
+ const addRow = async () => {
+    const updated = rows.map((row) => {
+        const newErrors = {
+            date: validateField("date", row.date),
+            description: validateField("description", row.description),
+            amount: validateField("amount", row.amount),
+        };
+        return { ...row, errors: newErrors };
+    });
 
-        const hasErrors = updated.some((row) =>
-            Object.values(row.errors).some((err) => err)
-        );
+    const hasErrors = updated.some((row) =>
+        Object.values(row.errors).some((err) => err)
+    );
 
-        if (hasErrors) {
-            setRows(updated);
+    if (hasErrors) {
+        setRows(updated);
+        return;
+    }
+
+    // 🔍 Identify rows missing category
+    const toClassify = updated.filter(row => !row.category && row.description);
+
+    if (toClassify.length > 0) {
+        try {
+            const response = await fetch("http://localhost:8000/api/classify/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ transactions: toClassify }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // 🧠 Update rows with predicted categories
+                const newRows = updated.map((row) => {
+                    const classified = data.classified.find(
+                        (c) => c.description === row.description &&
+                               c.amount === row.amount &&
+                               c.date === row.date
+                    );
+                    return classified
+                        ? { ...row, category: classified.predicted_category }
+                        : row;
+                });
+
+                setRows([
+                    ...newRows,
+                    { ...defaultRow, errors: { ...defaultRow.errors } },
+                ]);
+                notify("Category auto-filled for empty rows!", "info");
+            } else {
+                notify(data.error || "Category classification failed.");
+                return;
+            }
+        } catch (error) {
+            console.error(error);
+            notify("Failed to connect to backend.");
             return;
         }
-
-        setRows([...updated, { ...defaultRow, errors: { ...defaultRow.errors } }]);
-    };
+    } else {
+        setRows([
+            ...updated,
+            { ...defaultRow, errors: { ...defaultRow.errors } },
+        ]);
+    }
+};
     const notify = (message, type = "danger") => {
         notificationAlertRef.current.notificationAlert({
             place: "tr",
